@@ -1,0 +1,17 @@
+table{
+    justify-content: center;
+    text-align: center;
+}
+
+.parent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* background-image: url(../assets/Shoppie1.jpeg); */
+    font-size: 20px;
+  }
+
+  .example-full-width{
+    width: 100%;
+  }
