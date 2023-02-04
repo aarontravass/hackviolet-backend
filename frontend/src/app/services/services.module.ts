@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
-import { LoginService } from "./login.service";
+import { AuthService } from "./auth.service";
 
 @NgModule({
-    providers:[LoginService]
+    providers:[AuthService]
 })
 export class ServiceModule{}

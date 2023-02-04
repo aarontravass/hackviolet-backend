@@ -1,1 +1,48 @@
-<p>registration works!</p>
+<div class="parent">
+    <form class="example-form" (ngSubmit)="submit()">
+  
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>First Name</mat-label>
+              <input type="text" matInput [(ngModel)]="body.first_name" placeholder="First Name" name="email" #email="ngModel">
+  
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width">
+                <mat-label>Last Name</mat-label>
+                <input type="text" matInput [(ngModel)]="body.last_name" placeholder="Last Name" name="email" #email="ngModel">
+    
+              </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput [(ngModel)]="body.email" placeholder="Email" name="email" #email="ngModel">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+                <mat-label>Password</mat-label>
+                <input type="password" matInput [(ngModel)]="body.password" name="password" #password="ngModel">
+              </mat-form-field>
+            </td>
+          </tr>
+        <tr>
+          <td>
+            <button mat-raised-button name="submit" color="primary" type="submit">Login</button>
+  
+          </td>
+        </tr>
+      </table>
+  
+  
+    </form>
+  </div>
+  

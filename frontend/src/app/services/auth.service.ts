@@ -3,11 +3,12 @@ import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { LoginBody } from "../homepage/homepage.component";
+import { RegistrationBody } from "../registration/registration.component";
 
 @Injectable({
     providedIn: 'root'
 })
-export class LoginService{
+export class AuthService{
     constructor(private readonly http:HttpClient){
 
     }
@@ -21,5 +22,9 @@ export class LoginService{
 
     login(body: LoginBody):Observable<any>{
         return this.http.post('', body).pipe(catchError(this.handleError));;
+    }
+
+    register(body: RegistrationBody):Observable<any>{
+        return this.http.post('', body).pipe(catchError(this.handleError));
     }
 }
