@@ -24,8 +24,7 @@ class KrogerClient:
         }
         response = requests.get(url, headers=headers, params=params)
 
-        if not self.t:
-            self.t = True
+        if response.status_code == 401:
             self.token = get_client_access_token(encoded_client_token).get("access_token")
             return self._make_get_request(endpoint=endpoint, params=params)
         return json.loads(response.text)
