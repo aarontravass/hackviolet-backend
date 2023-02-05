@@ -4,10 +4,12 @@ from dotenv import load_dotenv
 import src.auth.auth as auth
 import src.nutrition.edmam.edmam as edmam
 import json
+from flask_cors import CORS
+
 load_dotenv()
 
 app = Flask(__name__)
-
+CORS(app)
 
 
 @app.route("/login", methods = ['POST'])
