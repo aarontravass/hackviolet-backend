@@ -7,11 +7,9 @@ from pymongo.database import Database
 
 load_dotenv()
 
+CONNECTION_STRING = os.getenv('MONGODB_URI')
+client = MongoClient(CONNECTION_STRING)
 
-class Mongo:
-    def __int__(self):
-        self.CONNECTION_STRING = os.getenv('MONGODB_URI')
-        self.client = MongoClient(self.CONNECTION_STRING)
+def getDb():
+    return client
 
-    def get_db(self) -> Database[Mapping[str, Any] | Any]:
-        return self.client['public']

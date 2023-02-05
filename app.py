@@ -1,23 +1,23 @@
-from flask import Flask
+from flask import Flask, Response, request
 import os
 from dotenv import load_dotenv
-import src.kroger.kroger as kroger
+import src.auth.auth as auth
 load_dotenv()
 
 app = Flask(__name__)
 
 
 
-@app.route("/")
-def hello_world():
-    return ""
+@app.route("/login", methods = ['POST'])
+def login():
+    print(request.json)
+    response = auth.login(request.json)
+    return Response(response, status=response.get('statusCode'), mimetype='application/json')
 
 
-@app.route("/kroger/location_id")
-def getLocation(zip_code: str):
-    return kroger.location(zip_code)
+
 
 if __name__ == "__main__":
     port = os.getenv('PORT')
     host = os.getenv('HOST')
-    app.run(host = host, port = port)
+    app.run(host = host, port = port, debug=True)
