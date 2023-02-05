@@ -26,7 +26,7 @@ def login(body: dict) -> dict:
             'message': 'Email and Password is required'
         }
         return response
-    hashed_string = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    hashed_string = hashlib.sha384(password.encode('utf-8')).hexdigest()
 
     mongo_res = users_collection.find_one({'email': email})
     if mongo_res is None:
@@ -79,7 +79,7 @@ def register(body: dict) -> dict:
             'message': 'First Name, Last Name, Email, Password is required'
         }
         return response
-    hashed_string = hashlib.sha256(password.encode('utf-8')).hexdigest()
+    hashed_string = hashlib.sha384(password.encode('utf-8')).hexdigest()
     hashed = bcrypt.hashpw(hashed_string.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
     input_data = {
         'first_name': first_name,
