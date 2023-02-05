@@ -72,7 +72,7 @@ def register(body: dict) -> dict:
     last_name = body.get('last_name')
     email = body.get('email')
     password = body.get('password')
-    if not first_name and not last_name and not email and not password:
+    if not first_name or not last_name or not email or not password:
         response = {
             'statusCode': 400,
             'status': False,

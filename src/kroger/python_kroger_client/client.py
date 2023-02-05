@@ -2,10 +2,10 @@
 import requests
 import json
 
-from python_kroger_client.auth_service import get_client_access_token
-from python_kroger_client.api_params import get_mapped_params
-from python_kroger_client.models.product import Product
-from python_kroger_client.models.location import Location
+from src.kroger.python_kroger_client.auth_service import get_client_access_token
+from src.kroger.python_kroger_client.api_params import get_mapped_params
+from src.kroger.python_kroger_client.models.product import Product
+from src.kroger.python_kroger_client.models.location import Location
 
 
 # Production API URL
