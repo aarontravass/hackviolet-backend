@@ -3,5 +3,5 @@ WORKDIR /app
 COPY requirements.txt /app/app.py
 RUN pip install -r requirements.txt
 COPY ./ /app/
-EXPOSE 5000
+EXPOSE $PORT
 CMD ["python app.py"]
