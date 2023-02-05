@@ -4,4 +4,4 @@ COPY requirements.txt /app/
 RUN pip install -r requirements.txt
 COPY ./ /app/
 EXPOSE $PORT
-CMD ["python app.py"]
+CMD ["python", "app.py"]
