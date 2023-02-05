@@ -6,7 +6,7 @@ from src.kroger.python_kroger_client.auth_service import get_client_access_token
 from src.kroger.python_kroger_client.api_params import get_mapped_params
 from src.kroger.python_kroger_client.models.product import Product
 from src.kroger.python_kroger_client.models.location import Location
-
+from src.kroger.python_kroger_client.config import encoded_client_token
 
 # Production API URL
 API_URL = 'https://api.kroger.com/v1'
@@ -15,6 +15,7 @@ class KrogerClient:
     '''
         Base class
     '''
+
     def _make_get_request(self, endpoint, params=None):
         url     = API_URL + endpoint
         headers = {
@@ -23,7 +24,15 @@ class KrogerClient:
         }
         response = requests.get(url, headers=headers, params=params)
 
+        if not self.t:
+            self.t = True
+            self.token = get_client_access_token(encoded_client_token).get("access_token")
+            return self._make_get_request(endpoint=endpoint, params=params)
         return json.loads(response.text)
+
+
+
+
 
     def get_locations(self, zipcode, within_miles=10, limit=5, chain='Kroger'):
         params   = get_mapped_params(locals())
@@ -60,4 +69,5 @@ class KrogerServiceClient(KrogerClient):
             - Search for products
     """
     def __init__(self, encoded_client_token):
-        self.token = get_client_access_token(encoded_client_token)
+        self.token = get_client_access_token(encoded_client_token).get("access_token")
+        self.t = False
