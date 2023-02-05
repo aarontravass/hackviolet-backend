@@ -6,9 +6,8 @@ import src.nutrition.edmam.edmam as edmam
 import json
 load_dotenv()
 
+
 app = Flask(__name__)
-
-
 
 @app.route("/login", methods = ['POST'])
 def login():
